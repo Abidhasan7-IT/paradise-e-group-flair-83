@@ -107,9 +107,9 @@ export const HeroSlider = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className={`border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 ${!isTransitioning ? 'fade-in-up' : ''}`}
+            className={`border-white bg-success text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 ${!isTransitioning ? 'fade-in-up' : ''}`}
           >
-            More About Us
+            <a href="#contact">More Contact Us</a>
           </Button>
         </div>
       </div>

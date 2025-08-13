@@ -42,7 +42,7 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     /* Custom design tokens */
-    --hero-gradient: linear-gradient(135deg, hsla(217, 32%, 18%, 0.9), hsla(222, 84%, 5%, 0.8));
+    --hero-gradient: linear-gradient(135deg, hsla(218, 33%, 18%, 0.737), hsla(223, 84%, 5%, 0.573));
     --text-glow: 0 0 20px rgba(255, 255, 255, 0.1);
     --slide-transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     --fade-transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -159,6 +159,62 @@ All colors MUST be HSL.
   }
 }
 
+/* Preloader animations */
+@keyframes preloaderFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes preloaderFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes progressBarFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes floatingElements {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.6);
+  }
+}
+
 .slide-in-left {
   animation: slideInFromLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -177,6 +233,27 @@ All colors MUST be HSL.
 
 .parallax-float {
   animation: parallaxFloat 6s ease-in-out infinite;
+}
+
+/* Preloader animation classes */
+.preloader-fade-in {
+  animation: preloaderFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.preloader-fade-out {
+  animation: preloaderFadeOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.progress-bar-fill {
+  animation: progressBarFill 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.floating-elements {
+  animation: floatingElements 4s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
 }
 
 .text-glow {

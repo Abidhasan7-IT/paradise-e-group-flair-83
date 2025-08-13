@@ -1,5 +1,5 @@
-import egroupLogo from '@/assets/egroup-logo.png';
-import paradiseLogo from '@/assets/paradise-logo.png';
+import egroupLogo from '@/assets/ee.png';
+import paradiseLogo from '@/assets/paralogo.png';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer = () => {

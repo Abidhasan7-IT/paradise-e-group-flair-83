@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
-import egroupLogo from '@/assets/egroup-logo.png';
-import paradiseLogo from '@/assets/paradise-logo.png';
+import egroupLogo from '@/assets/ee.png';
+import paradiseLogo from '@/assets/paralogo.png';
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,6 +34,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logos */}
           <div className="flex items-center space-x-4">
+            <a href="/" className='flex items-center space-x-4'>
             <img 
               src={egroupLogo} 
               alt="E-Group Logo" 
@@ -45,6 +46,7 @@ export const Navigation = () => {
               alt="Paradise Interior Logo" 
               className="h-10 w-auto object-contain"
             />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -53,7 +55,7 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-nav-text hover:text-nav-text-hover transition-colors duration-300 font-light tracking-wide cursor-pointer"
+                  className="text-nav-text font-bold hover:text-nav-text-hover transition-colors duration-300 tracking-wide cursor-pointer"
               >
                 {item.name}
               </button>
@@ -82,7 +84,7 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block text-nav-text hover:text-nav-text-hover transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
+                className="block text-nav-text font-bold hover:text-nav-text-hover transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
               >
                 {item.name}
               </button>
