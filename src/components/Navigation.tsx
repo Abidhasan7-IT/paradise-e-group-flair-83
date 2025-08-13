@@ -53,7 +53,7 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-muted-foreground transition-colors duration-300 font-light tracking-wide cursor-pointer"
+                className="text-nav-text hover:text-nav-text-hover transition-colors duration-300 font-light tracking-wide cursor-pointer"
               >
                 {item.name}
               </button>
@@ -82,7 +82,7 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block text-foreground hover:text-muted-foreground transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
+                className="block text-nav-text hover:text-nav-text-hover transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
               >
                 {item.name}
               </button>
