@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import egroupLogo from '@/assets/egroup-logo.png';
 import paradiseLogo from '@/assets/paradise-logo.png';
 
@@ -28,7 +29,7 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/10 backdrop-blur-sm border-b border-border/20">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logos */}
@@ -52,32 +53,36 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-gray-300 transition-colors duration-300 font-light tracking-wide cursor-pointer"
+                className="text-foreground hover:text-muted-foreground transition-colors duration-300 font-light tracking-wide cursor-pointer"
               >
                 {item.name}
               </button>
             ))}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-white hover:bg-white/20"
-            onClick={toggleMenu}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </Button>
+          {/* Mobile Navigation & Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-foreground hover:bg-accent"
+              onClick={toggleMenu}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-black/80 backdrop-blur-md rounded-lg p-4 slide-in-left">
+          <div className="md:hidden mt-4 bg-card/80 backdrop-blur-md rounded-lg p-4 slide-in-left">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block text-white hover:text-gray-300 transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
+                className="block text-foreground hover:text-muted-foreground transition-colors duration-300 font-light tracking-wide py-2 w-full text-left"
               >
                 {item.name}
               </button>
