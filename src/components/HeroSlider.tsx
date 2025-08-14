@@ -149,14 +149,14 @@ export const HeroSlider = () => {
       </div>
 
       {/* Social Media Links - Right Side */}
-      <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 flex flex-col space-y-4">
-        <div className="text-white text-sm font-light tracking-wider transform rotate-90 origin-center mb-8">
+      <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 flex flex-col space-y-10">
+        <div className="text-white text-sm font-light font-bold tracking-wider transform rotate-90 origin-center mb-8">
           Instagram
         </div>
-        <div className="text-white text-sm font-light tracking-wider transform rotate-90 origin-center mb-8">
+        <div className="text-white text-sm font-light font-bold tracking-wider transform rotate-90 origin-center mb-8">
           Twitter
         </div>
-        <div className="text-white text-sm font-light tracking-wider transform rotate-90 origin-center mb-8">
+        <div className="text-white text-sm font-light font-bold tracking-wider transform rotate-90 origin-center mb-8">
           Facebook
         </div>
       </div>

@@ -4,6 +4,8 @@ import { CheckCircle, Home, Palette, Wrench } from 'lucide-react';
 import interior1 from '@/assets/interior-1.jpg';
 import interior2 from '@/assets/interior-2.jpg';
 import interior3 from '@/assets/interior-3.jpg';
+import { useState } from 'react';
+import { toast } from '@/hooks/use-toast';
 
 export const AboutSection = () => {
   return (
@@ -152,6 +154,74 @@ export const PortfolioSection = () => {
 };
 
 export const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Create email content
+      const emailContent = `
+        New Contact Form Submission from Paradise Interior Website
+        
+        Name: ${formData.firstName} ${formData.lastName}
+        Email: ${formData.email}
+        Phone: ${formData.phone}
+        Message: ${formData.message}
+        
+        Submitted on: ${new Date().toLocaleString()}
+      `;
+
+      // Send email using mailto link (fallback method)
+      const mailtoLink = `mailto:egroupltd.info@gmail.com?subject=New Contact Form Submission - Paradise Interior&body=${encodeURIComponent(emailContent)}`;
+      
+      // Open default email client
+      window.open(mailtoLink);
+
+      // Show success message
+      toast({
+        title: "Message Sent!",
+        description: "Your message has been sent successfully. We'll get back to you soon!",
+        variant: "default",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-secondary/20">
       <div className="max-w-7xl mx-auto px-6">
@@ -171,28 +241,30 @@ export const ContactSection = () => {
               <div>
                 <h4 className="font-semibold mb-2">Address</h4>
                 <p className="text-muted-foreground">
-                  E-Group Corporate Center<br />
-                  Paradise Interior & Exterior Division<br />
-                  Dhaka, Bangladesh
+                House-23, Garib-E-Newaz, Sector 13, Uttara, Dhaka-1230, Bangladesh
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-2">Phone</h4>
-                <p className="text-muted-foreground">+880 1XXX-XXXXXX</p>
+                <p className="text-muted-foreground">+880 1400055289</p>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-2">Email</h4>
-                <p className="text-muted-foreground">info@paradiseinterior.com</p>
+                <p className="text-muted-foreground">egroupltd.info@gmail.com</p>
               </div>
 
               <div>
-                <h4 className="font-semibold mb-2">Working Hours</h4>
-                <p className="text-muted-foreground">
-                  Monday - Friday: 9:00 AM - 6:00 PM<br />
-                  Saturday: 10:00 AM - 4:00 PM
-                </p>
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.708982536986!2d90.3898424799492!3d23.870877872682538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4171327958f%3A0x7ff6b906204cb448!2sGareeb-e-Newaz%20Ave%2C%20Dhaka%201230!5e0!3m2!1sen!2sbd!4v1755155886030!5m2!1sen!2sbd" 
+                  width="480" 
+                  height="400" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>
@@ -200,12 +272,16 @@ export const ContactSection = () => {
           <div className="slide-in-right">
             <Card className="p-8">
               <h3 className="text-2xl font-semibold mb-6">Send us a Message</h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name</label>
                     <input
                       type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                       placeholder="Your first name"
                     />
@@ -214,6 +290,10 @@ export const ContactSection = () => {
                     <label className="block text-sm font-medium mb-2">Last Name</label>
                     <input
                       type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                       placeholder="Your last name"
                     />
@@ -224,6 +304,10 @@ export const ContactSection = () => {
                   <label className="block text-sm font-medium mb-2">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     placeholder="your.email@example.com"
                   />
@@ -233,6 +317,10 @@ export const ContactSection = () => {
                   <label className="block text-sm font-medium mb-2">Phone</label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     placeholder="Your phone number"
                   />
@@ -241,14 +329,23 @@ export const ContactSection = () => {
                 <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                     rows={5}
                     className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>

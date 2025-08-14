@@ -4,8 +4,8 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react'
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-secondary text-secondary-foreground py-10">
+      <div className="max-w-7xl mx-auto px-5">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -63,11 +63,11 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground text-sm">+880 1XXX-XXXXXX</span>
+                <span className="text-muted-foreground text-sm">+880 1400055289</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground text-sm">info@paradiseinterior.com</span>
+                <span className="text-muted-foreground text-sm">egroupltd.info@gmail.com</span>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export const Footer = () => {
 
         <div className="border-t border-border mt-12 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 Paradise Interior & Exterior - A Division of E-Group. All rights reserved.
+            © 2025 Paradise Interior & Exterior - A Division of <a href="https://e-groupbd.com" target="_blank" className="text-primary hover:underline">E-Group</a>. All rights reserved.
           </p>
         </div>
       </div>
